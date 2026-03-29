@@ -6,6 +6,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import resumeRoutes from './src/routes/resume.js'
 import { errorHandler } from './src/middleware/errorHandler.js'
+import roadmapRoutes from './src/routes/roadmap.js'
 
 const app = express()
 // --- middleware ---
@@ -17,7 +18,7 @@ app.use(express.json())
 
 // parse URL-encoded form data
 app.use(express.urlencoded({ extended: true }))
-
+app.use('/api/roadmap', roadmapRoutes)
 // --- routes ---
 // health check — always useful to verify server is alive
 app.get('/api/health', (req, res) => {
